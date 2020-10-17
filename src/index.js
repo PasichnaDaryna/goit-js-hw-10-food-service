@@ -1,4 +1,4 @@
-import menuCardTpl from './templates/menu-item.hbs';
+import menuCardTpl from "./templates/menu-item.hbs";
 import cards from './menu.json';
 
 
@@ -37,8 +37,8 @@ menuContainer.insertAdjacentHTML("beforeend", cardsMarkup);
 // menuContainer.addEventListener('click', onCardsContainerClick);
 
 function createColorCardsMarkup(cards) {
-  return menuCardTpl(cards);
+    return menuCardTpl(cards);
 }
 
-// console.log(menuCardTpl);
-// console.log(cards);
+console.log(menuCardTpl);
+console.log(cards);
