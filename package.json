@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "predeploy": "npm run build -- --public-url=/parcel-project-template/",
+    "predeploy": "npm run build -- --public-url=/goit-js-hw-10-food-service/",
     "deploy": "gh-pages -d dist"
   },
   "repository": {
@@ -29,5 +29,5 @@
   "bugs": {
     "url": "https://github.com/PasichnaDaryna/goit-js-hw-10-food-service/issues"
   },
-  "homepage": "https://github.com/PasichnaDaryna/goit-js-hw-10-food-service#readme"
+  "homepage": "https://pasichnadaryna.github.io/goit-js-hw-10-food-service/"
 }
