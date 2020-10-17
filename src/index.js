@@ -31,6 +31,8 @@ function clickHandler() {
 
 
 //  menu-cards
+
+
 const menuContainer = document.querySelector(".js-menu");
 const cardsMarkup = createColorCardsMarkup(cards);
 menuContainer.insertAdjacentHTML("beforeend", cardsMarkup);
@@ -40,5 +42,5 @@ function createColorCardsMarkup(cards) {
     return menuCardTpl(cards);
 }
 
-console.log(menuCardTpl);
-console.log(cards);
+// console.log(menuCardTpl);
+// console.log(cards);
