@@ -2355,33 +2355,69 @@ var _menu = _interopRequireDefault(require("./menu.json"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // theme switched
-var body = document.querySelector('body');
-var themeSwitcher = document.querySelector(".theme-switch__toggle");
 var Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme'
 };
-console.log(Theme.DARK);
-themeSwitcher.addEventListener('click', clickHandler);
-themeSwitcher.checked = false;
+var body = document.querySelector('body');
+var themeSwitcher = document.querySelector(".theme-switch__toggle");
+themeSwitcher.addEventListener('change', clickHandler);
+themeSwitcher.addEventListener('change', setLocalStorage);
+document.addEventListener('DOMContentLoaded', getThemeFromLocalStorage);
 
-function clickHandler() {
-  if (this.checked) {
-    body.classList.remove(Theme.LIGHT);
-    body.classList.add(Theme.DARK);
-    localStorage.setItem("theme", "dark-theme");
+function clickHandler(e) {
+  if (themeSwitcher.checked) {
+    setDarkTheme();
   } else {
-    body.classList.remove(Theme.DARK);
-    body.classList.add(Theme.LIGHT);
-    localStorage.setItem("theme", "light-theme");
+    setLightTheme();
   }
 }
 
-; //  menu-cards
+function setLocalStorage(e) {
+  if (themeSwitcher.checked) {
+    localStorage.setItem('theme', Theme.DARK);
+  } else {
+    localStorage.removeItem('theme');
+    localStorage.setItem('theme', Theme.LIGHT);
+  }
+}
+
+function getThemeFromLocalStorage() {
+  var themeInLocalStrg = localStorage.getItem('theme');
+
+  if (themeInLocalStrg === Theme.DARK) {
+    body.classList.add(Theme.DARK);
+    themeSwitcher.checked = true;
+  }
+}
+
+function setDarkTheme() {
+  body.classList.add(Theme.DARK);
+  body.classList.remove(Theme.LIGHT);
+}
+
+function setLightTheme() {
+  body.classList.add(Theme.LIGHT);
+  body.classList.remove(Theme.DARK);
+} // themeSwitcher.checked = false;
+// function clickHandler() {
+//   if (this.checked) {
+//     body.classList.remove(Theme.LIGHT);
+//     body.classList.add(Theme.DARK)
+//     localStorage.setItem("theme", "dark-theme")
+//   }
+//   else {
+//     body.classList.remove(Theme.DARK);
+//     body.classList.add(Theme.LIGHT)
+//     localStorage.setItem("theme", "light-theme")
+//   }
+//  };
+//  menu-cards
+
 
 var menuContainer = document.querySelector(".js-menu");
 var cardsMarkup = createColorCardsMarkup(_menu.default);
-menuContainer.insertAdjacentHTML("beforeend", cardsMarkup); // menuContainer.addEventListener('click', onCardsContainerClick);
+menuContainer.insertAdjacentHTML("beforeend", cardsMarkup);
 
 function createColorCardsMarkup(cards) {
   return (0, _menuItem.default)(cards);
@@ -2415,7 +2451,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60337" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63044" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
